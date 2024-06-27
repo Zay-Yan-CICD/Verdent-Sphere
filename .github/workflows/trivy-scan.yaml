@@ -1,5 +1,6 @@
-on:
-  workflow_call:
+name: Scanning Image
+
+on: workflow_call
 
 jobs:
   build:
@@ -12,7 +13,7 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@0.23.0
         with:
-          image-ref: 'docker.io/my-organization/my-app:${{ github.sha }}'
+          image-ref: 'docker.io/devopsprozy/verdent:${{ github.sha }}'
           format: 'sarif'
           output: 'trivy-results.sarif'
 
