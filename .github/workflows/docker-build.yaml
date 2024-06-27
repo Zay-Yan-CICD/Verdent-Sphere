@@ -1,4 +1,4 @@
-name: Build Laravel App
+name: Dockerize Laravel App
 
 on: workflow_call
 

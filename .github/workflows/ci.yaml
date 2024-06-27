@@ -35,5 +35,15 @@ jobs:
         uses: SonarSource/sonarcloud-github-action@v2.3.0
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+    
+  dockerbuild:
+    name: "Docker Build and Push"
+    needs: [test]
+    uses: ./.github/workflows/docker-build.yaml
+
+  trivyscan:
+    name: "Trivy Scanning Image"
+    needs: [dockerbuild]
+    uses: ./.github/workflows/trivy-scan.yaml
 
            
