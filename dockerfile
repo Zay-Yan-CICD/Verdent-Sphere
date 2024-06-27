@@ -1,5 +1,5 @@
 # Use the official PHP image as the base image
-FROM php:8.1-cli
+FROM php:8.2-cli
 
 # Set the working directory
 WORKDIR /var/www/html
@@ -16,7 +16,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 COPY . .
 
 # Install Laravel dependencies
-RUN composer install --no-interaction --optimize-autoloader --no-dev
+RUN composer install
 
 # Set permissions
 RUN chown -R www-data:www-data /var/www/html \
